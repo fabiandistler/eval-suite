@@ -106,6 +106,7 @@ def ask_model(model: str, menu: list[dict], prompt: str) -> str:
         capture_output=True,
         text=True,
         timeout=120,
+        check=False,
     )
     if result.returncode != 0:
         raise RuntimeError(result.stderr.strip() or "claude CLI failed")

@@ -164,7 +164,9 @@ def run_prompt(prompt: str, plugin_dirs: list[Path], workdir: Path, model: str |
     ]
     if model:
         cmd += ["--model", model]
-    result = subprocess.run(cmd, cwd=workdir, capture_output=True, text=True, timeout=600)
+    result = subprocess.run(
+        cmd, cwd=workdir, capture_output=True, text=True, timeout=600, check=False
+    )
     # A max-turns exit is expected and still carries the events we need.
     return result.stdout.splitlines()
 
@@ -302,7 +304,7 @@ def main() -> int:
                 ok_pos += sum(1 for _, m, _ in obs if m == p["expected"])
         print(
             f"{p['id']:16} {p['expected']:30} {fired}/{len(obs):5} "
-            f"{str(dict(picked)):34} {dict(taken)}"
+            f"{dict(picked)!s:34} {dict(taken)}"
         )
     print(f"\npositives: fired {fired_pos}/{n_pos}, expected member reached {ok_pos}/{n_pos}")
     print(f"paths taken (non-negatives): {dict(paths)}")
