@@ -99,6 +99,21 @@ excludes `generic` ("Is our architecture okay?"), the one prompt a router wins
 and a flat layout loses, so a router-versus-flat total read off that line omits
 the router's main argument. Read the per-prompt rows for that comparison.
 
+**A probe must not imply repository state the workdir lacks.** "Sort the items
+in BACKLOG.md", "the branch has 14 commits", even "I just reworked paginate()"
+all send the model looking for something `make_workdir` never created, and
+`MAX_TURNS` is spent on `git log`, `find` and `git diff` before any skill
+decision happens. Such a probe scores a clean miss that no skill description
+can repair, so it silently caps the achievable rate instead of measuring
+triggering. Three of the five `communication` probes had to be rewritten for
+exactly this; describe the situation in the prompt itself, or anchor only on
+what the workdir actually contains.
+
+**Reached is not produced.** `ALLOWED_TOOLS` grants no `Write`, so the check
+observes a skill being reached, not its deliverable being written. For a skill
+that exists to produce a file, a reach rate is a proxy; measuring production
+needs a separate run with `Write` allowed and a wider turn budget.
+
 **Flat numbers predate a fix.** Until the rebuilt layouts started reusing the
 category's real `plugin.json`, they wrote a placeholder description in its
 place, so any `--flat` rate recorded before that change was measured without
