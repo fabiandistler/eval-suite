@@ -114,6 +114,36 @@
       "category": "ai-ml",
       "expected": "none",
       "prompt": "Wie plotte ich in Python ein Balkendiagramm mit dem Umsatz pro Region?"
+    },
+    {
+      "id": "cli-variants-de",
+      "category": "communication",
+      "expected": "html-artifacts",
+      "prompt": "Ich habe drei Varianten, wie die Fehlermeldungen unseres CLI aussehen könnten — knapp, ausführlich mit Lösungshinweis, und farbcodiert. Stell mir die drei nebeneinander, damit ich mich entscheiden kann."
+    },
+    {
+      "id": "triage-board",
+      "category": "communication",
+      "expected": "html-artifacts",
+      "prompt": "I need to sort a backlog of about 30 items into now, next and later, and I would rather drag them around than rewrite a list by hand. Set me up something for that which I can copy the result out of at the end."
+    },
+    {
+      "id": "easing-feel",
+      "category": "communication",
+      "expected": "html-artifacts",
+      "prompt": "I need to pick the timing for the sidebar slide-in. Before I commit to numbers I want to actually feel the difference between a few easing curves and durations."
+    },
+    {
+      "id": "decisions-deck-de",
+      "category": "communication",
+      "expected": "html-artifacts",
+      "prompt": "Morgen gehe ich mit dem Team acht offene Entscheidungen zum neuen Release-Prozess durch — je Entscheidung die zwei, drei Optionen und wo wir gerade stehen. Bereite mir das so auf, dass ich mich beim Durchgehen daran entlanghangeln kann und alle mitkommen."
+    },
+    {
+      "id": "neg-paginate",
+      "category": "communication",
+      "expected": "none",
+      "prompt": "The paginate() helper in app/utils.py blows up when size is 0. Make it return an empty list instead of raising."
     }
   ]
 }
