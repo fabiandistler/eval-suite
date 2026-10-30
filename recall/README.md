@@ -63,19 +63,19 @@ rather than absorbed.
 
 ```sh
 # routed layout, 3 runs per prompt (triggering is stochastic; read rates)
-python3 eval-suite/recall/check_live.py --category architecture
+AGENTS_REPO=../agents python3 recall/check_live.py --category architecture
 
 # the same prompts with the members registered flat, for comparison
-python3 eval-suite/recall/check_live.py --category architecture --flat
+AGENTS_REPO=../agents python3 recall/check_live.py --category architecture --flat
 
 # keep the router but give one member its own top-level entry (the hybrid)
-python3 eval-suite/recall/check_live.py --category architecture --promote c4-modeling
+AGENTS_REPO=../agents python3 recall/check_live.py --category architecture --promote c4-modeling
 
 # pin the model you actually run
-python3 eval-suite/recall/check_live.py --category architecture --model claude-opus-5
+AGENTS_REPO=../agents python3 recall/check_live.py --category architecture --model claude-opus-5
 
 # the other routed category
-python3 eval-suite/recall/check_live.py --category ai-ml
+AGENTS_REPO=../agents python3 recall/check_live.py --category ai-ml
 ```
 
 Prompts deliberately describe a situation without naming the technique

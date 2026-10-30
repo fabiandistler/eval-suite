@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Live trigger check: does a router actually fire inside the agent?
 
-Run from repo root:
-    python3 eval-suite/recall/check_live.py --category architecture
-    python3 eval-suite/recall/check_live.py --category architecture --flat
-    python3 eval-suite/recall/check_live.py --category architecture --reps 3 --model claude-opus-5
+Run from an agents checkout, or point AGENTS_REPO at one:
+    python3 ../eval-suite/recall/check_live.py --category architecture
+    python3 ../eval-suite/recall/check_live.py --category architecture --flat
+    AGENTS_REPO=../agents python3 recall/check_live.py --category ai-ml --model claude-opus-5
 
 `check_recall.py` shows the model a *menu* of descriptions and forces it to pick
 one. That measures which skill wins once the model has decided to consult a
@@ -41,6 +41,7 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -49,7 +50,10 @@ from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-REPO_ROOT = HERE.parent.parent
+# The catalogue under test lives in its own repository (fabiandistler/agents).
+# Its working tree is what gets measured, so a before/after comparison points
+# this at a separate worktree per side.
+REPO_ROOT = Path(os.environ.get("AGENTS_REPO", Path.cwd())).resolve()
 MANIFEST_PATH = REPO_ROOT / "skills.json"
 PLUGINS_DIR = REPO_ROOT / "plugins"
 PROMPTS_PATH = HERE / "live_prompts.json"
@@ -317,6 +321,9 @@ def main() -> int:
     parser.add_argument("--only", help="comma-separated prompt ids to run")
     args = parser.parse_args()
 
+    if not MANIFEST_PATH.is_file():
+        sys.stderr.write("no skills.json in the agents checkout; run from one or set AGENTS_REPO\n")
+        return 2
     skills = load_manifest()
     members = members_of(skills, args.category)
     router = router_of(skills, args.category)
