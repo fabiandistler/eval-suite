@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Trigger-recall A/B: does routing hurt which skill the model would pick?
 
-Run from repo root (or anywhere):
-    python3 eval-suite/recall/check_recall.py            # A/B flat vs routed
-    python3 eval-suite/recall/check_recall.py --dry-run  # print menus, no model calls
-    python3 eval-suite/recall/check_recall.py --category architecture
+Run from an agents checkout, or point AGENTS_REPO at one:
+    python3 ../eval-suite/recall/check_recall.py            # A/B flat vs routed
+    python3 ../eval-suite/recall/check_recall.py --dry-run  # print menus, no model calls
+    AGENTS_REPO=../agents python3 recall/check_recall.py --category architecture
 
 Issue #50 gates flipping a category to a router on "no trigger-recall
 regression vs. the flat baseline". The existing eval-suite force-injects the
@@ -37,9 +37,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+# check_live owns where the agents checkout is (AGENTS_REPO or the cwd).
+from check_live import MANIFEST_PATH
+
 HERE = Path(__file__).resolve().parent
-REPO_ROOT = HERE.parent.parent
-MANIFEST_PATH = REPO_ROOT / "skills.json"
 PROMPTS_PATH = HERE / "prompts.json"
 DEFAULT_MODEL = "claude-sonnet-4-5"
 
@@ -148,6 +149,9 @@ def main() -> int:
         "--category", help="only score prompts whose expected skill is in this category"
     )
     args = parser.parse_args()
+    if not MANIFEST_PATH.is_file():
+        sys.stderr.write("no skills.json in the agents checkout; run from one or set AGENTS_REPO\n")
+        return 2
 
     skills = load_manifest()
     flat, routed, routers = build_menus(skills)

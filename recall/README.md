@@ -30,13 +30,13 @@ description needs broadening).
 
 ```sh
 # print the two menus and the prompt count without calling the model
-python3 eval-suite/recall/check_recall.py --dry-run
+AGENTS_REPO=../agents python3 recall/check_recall.py --dry-run
 
 # full A/B (needs the `claude` CLI on PATH; skips cleanly if absent)
-python3 eval-suite/recall/check_recall.py
+AGENTS_REPO=../agents python3 recall/check_recall.py
 
 # only the architecture prompts, allow a 1-prompt drop
-python3 eval-suite/recall/check_recall.py --category architecture --tolerance 1
+AGENTS_REPO=../agents python3 recall/check_recall.py --category architecture --tolerance 1
 ```
 
 If `claude` is not on `PATH` the check prints `SKIP` and exits 0, so it is safe

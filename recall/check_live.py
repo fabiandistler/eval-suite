@@ -61,9 +61,12 @@ PROMPTS_PATH = HERE / "live_prompts.json"
 # The router hop rarely needs more than: explore (optional) -> router -> member.
 MAX_TURNS = 3
 # Read-only tools are enough to observe the routing, plus Agent, because a
-# plugin subagent is one of the surfaces under measurement. Bash is denied to
-# the session on purpose so a run cannot shell out around the routing; a
-# subagent brings its own tool list, which is why the workdir is a throwaway.
+# plugin subagent is one of the surfaces under measurement. --allowedTools only
+# pre-approves these; it does not deny the rest. Under -p, Claude Code still
+# runs commands it classifies as read-only (Bash `git ls-files`, `cat`) and
+# refuses the others, so a run can look around the workdir with Bash but not
+# change it. A subagent brings its own tool list, which is why the workdir is
+# a throwaway.
 ALLOWED_TOOLS = "Skill,Read,Glob,Grep,Agent"
 
 
