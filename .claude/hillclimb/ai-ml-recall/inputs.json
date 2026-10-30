@@ -1,0 +1,219 @@
+{
+  "category": "ai-ml",
+  "cases": [
+    {
+      "id": "adr-hallucinate",
+      "prompt": "My chatbot keeps making things up — how do I stop the hallucinations.",
+      "expected": "llm-application-engineering",
+      "tags": [
+        "llm",
+        "en"
+      ],
+      "source": "A1 (R1, E1)"
+    },
+    {
+      "id": "adr-finetune-rag",
+      "prompt": "Should we fine-tune the model or add retrieval for this knowledge task.",
+      "expected": "llm-application-engineering",
+      "tags": [
+        "llm",
+        "en"
+      ],
+      "source": "A2 (R3)"
+    },
+    {
+      "id": "adr-agent-tools",
+      "prompt": "The agent loops and keeps calling the wrong tool — how do I fix tool selection.",
+      "expected": "llm-application-engineering",
+      "tags": [
+        "llm",
+        "en"
+      ],
+      "source": "A3 (E3)"
+    },
+    {
+      "id": "adr-prompt-test",
+      "prompt": "How do I test prompt changes without breaking what already works.",
+      "expected": "llm-application-engineering",
+      "tags": [
+        "llm",
+        "en"
+      ],
+      "source": "A4 (R2, E2)"
+    },
+    {
+      "id": "llm-wrong",
+      "prompt": "Our support assistant keeps making up order numbers that were never in the system. Someone on the team wants to train it on our own tickets — is that where we should start?",
+      "expected": "llm-application-engineering",
+      "tags": [
+        "llm",
+        "en",
+        "no-jargon"
+      ],
+      "source": "L"
+    },
+    {
+      "id": "llm-better-de",
+      "prompt": "Wir haben unseren Assistenten umgebaut und es fühlt sich besser an, aber niemand kann belegen, dass er wirklich besser antwortet. Wie stellen wir das fest, bevor wir es auf alle Kunden loslassen?",
+      "expected": "llm-application-engineering",
+      "tags": [
+        "llm",
+        "de",
+        "no-jargon"
+      ],
+      "source": "L"
+    },
+    {
+      "id": "rag-wrong-docs",
+      "prompt": "Fix my RAG retrieval — the chatbot cites the wrong documents",
+      "expected": "llm-application-engineering",
+      "tags": [
+        "llm",
+        "en"
+      ],
+      "source": "M negative → positive here"
+    },
+    {
+      "id": "adr-tabular-model",
+      "prompt": "Which model should I use for this tabular classification data.",
+      "expected": "ml-project-lifecycle",
+      "tags": [
+        "ml",
+        "en"
+      ],
+      "source": "A5"
+    },
+    {
+      "id": "adr-retrain",
+      "prompt": "Accuracy dropped after launch — when should we retrain the model.",
+      "expected": "ml-project-lifecycle",
+      "tags": [
+        "ml",
+        "en"
+      ],
+      "source": "A6 (R5)"
+    },
+    {
+      "id": "adr-ship-image",
+      "prompt": "Is this model good enough to ship for image classification.",
+      "expected": "ml-project-lifecycle",
+      "tags": [
+        "ml",
+        "en"
+      ],
+      "source": "A7"
+    },
+    {
+      "id": "ml-framing",
+      "prompt": "Management wants us to predict which customers will cancel next month. Where do we even start, and how would we know afterwards whether the thing is any good?",
+      "expected": "ml-project-lifecycle",
+      "tags": [
+        "ml",
+        "en",
+        "no-jargon"
+      ],
+      "source": "L"
+    },
+    {
+      "id": "churn-baseline",
+      "prompt": "I have 50k rows of customer data and want to predict churn — what baseline and model should I start with?",
+      "expected": "ml-project-lifecycle",
+      "tags": [
+        "ml",
+        "en"
+      ],
+      "source": "R4 (M1, E negatives 1+2)"
+    },
+    {
+      "id": "ml-deploy-de",
+      "prompt": "Im Notebook sagt unser Modell die Lieferzeiten ganz gut voraus, aber jetzt soll es in die Produktion. Worauf müssen wir achten, damit uns das nicht um die Ohren fliegt?",
+      "expected": "ml-project-lifecycle",
+      "tags": [
+        "ml",
+        "de",
+        "no-jargon"
+      ],
+      "source": "L"
+    },
+    {
+      "id": "demand-forecast",
+      "prompt": "Forecast weekly demand for the next quarter",
+      "expected": "ml-project-lifecycle",
+      "tags": [
+        "ml",
+        "en"
+      ],
+      "source": "M2"
+    },
+    {
+      "id": "tickets-no-labels",
+      "prompt": "Classify incoming support tickets, but we have no labeled data",
+      "expected": "any",
+      "tags": [
+        "ambiguous",
+        "en"
+      ],
+      "source": "M3"
+    },
+    {
+      "id": "generic-ai",
+      "prompt": "The team wants to add something AI-powered to the product this quarter. Can you help me think through what we should build and how to approach it?",
+      "expected": "any",
+      "tags": [
+        "ambiguous",
+        "en"
+      ],
+      "source": "L"
+    },
+    {
+      "id": "adr-neg-csv",
+      "prompt": "Clean this CSV with pandas and plot the columns.",
+      "expected": "none",
+      "tags": [
+        "negative",
+        "en"
+      ],
+      "source": "A neg 1 (R neg 1, M neg 2)"
+    },
+    {
+      "id": "adr-neg-numpy",
+      "prompt": "Speed up this numpy loop over the array.",
+      "expected": "none",
+      "tags": [
+        "negative",
+        "en"
+      ],
+      "source": "A neg 2"
+    },
+    {
+      "id": "neg-retry",
+      "prompt": "Our nightly job that calls the model provider's API dies whenever it hits a rate limit. Add retries with exponential backoff.",
+      "expected": "none",
+      "tags": [
+        "negative",
+        "en"
+      ],
+      "source": "L"
+    },
+    {
+      "id": "neg-plot-de",
+      "prompt": "Wie plotte ich in Python ein Balkendiagramm mit dem Umsatz pro Region?",
+      "expected": "none",
+      "tags": [
+        "negative",
+        "de"
+      ],
+      "source": "L"
+    },
+    {
+      "id": "sdk-param",
+      "prompt": "What's the exact parameter name for streaming in the Anthropic Python SDK?",
+      "expected": "none",
+      "tags": [
+        "negative",
+        "en"
+      ],
+      "source": "R neg 2"
+    }
+  ]
+}

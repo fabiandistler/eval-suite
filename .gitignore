@@ -1,3 +1,8 @@
 runs/
 .Rhistory
 .RData
+
+# hillclimb flows: transcripts and generated reports stay local
+.claude/hillclimb/**/traces/
+.claude/hillclimb/**/report.html
+.claude/hillclimb/**/trajectory/
