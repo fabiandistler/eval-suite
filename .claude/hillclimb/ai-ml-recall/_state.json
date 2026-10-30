@@ -1,0 +1,40 @@
+{
+  "metrics": [
+    {
+      "id": "correct",
+      "label": "correct",
+      "kind": "binary"
+    },
+    {
+      "id": "fired",
+      "label": "fired",
+      "kind": "binary"
+    }
+  ],
+  "perf_fields": [
+    {
+      "id": "cost_usd",
+      "label": "cost",
+      "unit": "$"
+    },
+    {
+      "id": "turns",
+      "label": "turns"
+    },
+    {
+      "id": "tool_calls",
+      "label": "tool calls"
+    },
+    {
+      "id": "hit_max_turns",
+      "label": "max turns hit"
+    },
+    {
+      "id": "latency_s",
+      "label": "latency",
+      "unit": "s"
+    }
+  ],
+  "harness_paths": [],
+  "harness_sha": "131daddb54e7b334288572ad21e705ab88906a09799a64ffa202b715d16b9b10"
+}
